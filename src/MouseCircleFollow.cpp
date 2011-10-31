@@ -85,12 +85,14 @@ void MouseCircleFollow::draw(){
 	// draw line
 	for(int jj = 0; jj<numOfCircles; jj ++) {  
 		
+		ofSetColor(blueRed,blueGreen,blueBlue, 255 * (float(jj)/float(numOfCircles)) );    //having BIG problems with the alpha part...usually won't accept transInt variable, will behave strangely with simple integers too (like "10"!)
+		
+		ofLine ((jj-1), yPos[jj-1], (jj), yPos[jj] ); 
+		
 		if ( ((jj-ii) > 0) && ( (jj-ii) <= 255) ) { 
 			trans = ceil ((250 * ((jj-ii)/200)) );
 			transInt = int(trans);
-			ofSetColor(blueRed,blueGreen,blueBlue, 255 * (float(jj)/float(numOfCircles)) );    //having BIG problems with the alpha part...usually won't accept transInt variable, will behave strangely with simple integers too (like "10"!)
-		
-			ofLine ((jj-1), yPos[jj-1], (jj), yPos[jj] ); 
+			
 		}
 		
 		else if ( ((jj-ii) >= 0) && ( (jj-ii) <= 50) ) { }
